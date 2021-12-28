@@ -1,0 +1,22 @@
+.modal-content {
+    .modal-action {
+        margin-left: 10px;
+        .point,
+        .reason {
+            width: 95%;
+            margin: 10px;
+        }
+    }
+}
+.is-loading {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    opacity: 0.5;
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+    z-index: 1;
+}

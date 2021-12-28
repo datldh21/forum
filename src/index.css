@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}

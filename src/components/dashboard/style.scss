@@ -1,0 +1,208 @@
+.dashboard-jira {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 30px;
+
+  .button-line {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    width: 250px;
+    background-color: #fff;
+    .btn {
+      margin: 10px;
+    }
+    .active-sprint-active-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #f3f3f3;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+    .back-log-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+    .next-sprint-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+  }
+
+  .dashboard-screen {
+    display: flex;
+    flex-direction: column;
+    width: 1060px;
+
+    .dashboard-task {
+      display: flex;
+      flex-direction: column;
+
+      .sprint-name {
+        margin-left: 30px;
+      }
+
+      .component-filter {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        overflow-y: scroll;
+        margin-left: 20px;
+        margin-bottom: 20px;
+
+        .wrap {
+          background-color: #fff;
+          border-radius: 20px;
+          margin: 10px;
+          min-width: 150px;
+          display: block;
+          cursor: pointer;
+          p {
+            text-align: center;
+            transform: translateY(7px);
+          }
+        }
+      }
+
+      .line-1 {
+        display: flex;
+        flex-direction: row;
+
+        .search-task {
+          margin-left: 30px;
+          transform: translateY(10px);
+          position: relative;
+
+          .icon {
+            position: absolute;
+            width: 27px;
+            transform: translate(10px, 10px);
+          }
+
+          input {
+            padding: 10px 10px 10px 50px;
+            border-radius: 10px;
+            border: 2px solid #f3f3f3;
+          }
+        }
+
+        .avatar-user {
+          margin-left: 30px;
+          display: flex;
+          justify-content: flex-start;
+          .logo {
+            width: 53px;
+            height: 53px;
+            border-radius: 35px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid white;
+          }
+
+          .unactive-user-avatar {
+            width: 53px;
+            height: 53px;
+            border-radius: 35px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid white;
+          }
+
+          .active-user-avatar {
+            width: 53px;
+            height: 53px;
+            border-radius: 35px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid #474ee5;
+          }
+
+          .more-users {
+            width: 53px;
+            height: 53px;
+            border-radius: 35px;
+            margin-left: 10px;
+            background-color: #e4e4e4;
+            border: 3px solid white;
+            cursor: pointer;
+
+            p {
+              transform: translateY(13px);
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .list-task {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-left: 30px;
+        background-color: #fff;
+        border-radius: 30px;
+        overflow-y: scroll;
+        .column {
+          margin: 10px 10px;
+          .box-status {
+            .status {
+              margin-top: 10px;
+              text-align: center;
+              font-size: 16px;
+              border: 2px solid #f3f3f3;
+              border-top: 4px solid;
+              border-radius: 4px 4px 20px 20px;
+            }
+          }
+          .wrap-task {
+            background: #fff;
+            border-radius: 25px;
+            margin-top: 10px;
+            border: 2px solid #f3f3f3;
+            display: block;
+            .task-box .task-content .line .line-2 {
+              .right {
+                margin-top: 35px;
+                .shortId {
+                  display: none;
+                }
+                .wrap-point {
+                  display: none;
+                }
+              }
+            }
+            .task-btn {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,307 @@
+.outoffice-registration-dialog {
+    font-family: 'Comfortaa', cursive;
+
+    .modal-content {
+        border-radius: 30px;
+        border: none;
+        background: none;
+    }
+
+    .modal-header {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        display: flex;
+        justify-content: center;
+
+        &.wfhs {
+            background-color: #2D69DF;
+        }
+
+        &.dayoffs {
+            background-color: #dc3545;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            text-transform: uppercase;
+            color: white;
+            font-weight: normal;
+        }
+    }
+
+    .modal-body {
+        background-color: white;
+        padding: 0;
+
+        .react-calendar {
+            border: none;
+            margin: 0 auto;
+            background-color: #FCF9FC;
+            width: 570px !important;
+
+            .react-calendar__month-view__weekdays__weekday abbr,
+            .react-calendar__month-view__weekdays abbr {
+                color: black;
+                opacity: 0.3;
+                text-decoration: none;
+            }
+
+            .react-calendar__tile--now {
+                background: none;
+                color: #12DB9F;
+            }
+
+            .react-calendar__tile {
+                &.morning abbr {
+                    border-radius: 100%;
+                    padding: 6px;
+                    display: inline-block;
+                    border: 3px solid #F5B717;
+                    text-align: center;
+                }
+
+                &.afternoon abbr {
+                    border-radius: 100%;
+                    padding: 6px;
+                    display: inline-block;
+                    border: 3px solid #2E6DE7;
+                    text-align: center;
+                }
+
+                &.allday abbr {
+                    border-radius: 100%;
+                    padding: 6px;
+                    display: inline-block;
+                    background-color: #28F1B5;
+                    text-align: center;
+                }
+
+                &.invalid {
+                    position: relative;
+                    overflow: visible !important;
+
+                    abbr {
+                        border-radius: 100%;
+                        padding: 6px;
+                        display: inline-block;
+                        background-color: #868686;
+                        text-align: center;
+                        width: 30px;
+                        height: 30px;
+                        border: none;
+                    }
+
+                    svg {
+                        position: absolute;
+                        color: #868686;
+                        top: 10px;
+                        right: 10px;
+                    }
+                }
+
+                &.approved {
+                    position: relative;
+
+                    abbr:before {
+                        content: "";
+                        position: absolute;
+                        background-color: white;
+                        width: 15px;
+                        height: 15px;
+                        top: 10px;
+                        right: 11px;
+                        border-radius: 100%;
+                    }
+
+                    svg {
+                        position: absolute;
+                        color: green;
+                        top: 10px;
+                        right: 10px;
+                    }
+                }
+
+                &.declined {
+                    position: relative;
+                    overflow: visible !important;
+
+                    abbr:before {
+                        content: "";
+                        position: absolute;
+                        background-color: white;
+                        width: 15px;
+                        height: 15px;
+                        top: 10px;
+                        right: 11px;
+                        border-radius: 100%;
+                    }
+
+                    svg {
+                        position: absolute;
+                        color: red;
+                        top: 10px;
+                        right: 10px;
+                    }
+                }
+
+                &.invalid .declined-reason, &.declined .declined-reason {
+                    display: none;
+                    position: absolute;
+                    background-color: #ECECEC;
+                    color: #868686;
+                    z-index: 1000;
+                    top: 100%;
+                    left: 20px;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    width: 150px;
+
+                    &:before {
+                        content: "";
+                        width: 0;
+                        height: 0;
+                        border-left: 5px solid transparent;
+                        border-right: 5px solid transparent;
+                        border-bottom: 10px solid #ECECEC;
+                        position: absolute;
+                        left: 5px;
+                        top: -10px;
+                    }
+                }
+
+                &.invalid:hover .declined-reason,
+                &.declined:hover .declined-reason {
+                    display: inline-block;
+                }
+            }
+
+            .react-calendar__tile--active {
+                background: none;
+                color: inherit;
+            }
+        }
+
+        .registration-detail-dialog {
+            position: absolute;
+            background-color: white;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 100;
+            width: 220px;
+
+            .alert {
+                font-size: 15px;
+
+                svg {
+                    margin-right: 5px;
+                }
+            }
+
+            .form-check {
+                margin-bottom: 10px;
+
+                input#registration-morning {
+                    border: 3px solid #F5B717;
+                }
+
+                input#registration-afternoon {
+                    border: 3px solid #2E6DE7;
+                }
+
+                input#registration-allday {
+                    border: 3px solid #28F1B5;
+                }
+
+                input#registration-cancel {
+                    border: 3px solid #868686;
+                }
+            }
+        }
+
+        .indices {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: space-around;
+
+            & > div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .indice {
+                text-align: right;
+                position: relative;
+                display: flex;
+                align-items: center;
+                color: #9A9A9A;
+                font-size: 13px;
+                margin-bottom: 5px;
+                text-transform: capitalize;
+
+                span {
+                    border-radius: 15px;
+                    width: 15px;
+                    height: 15px;
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+
+                &.morning span {
+                    border: 3px solid #F5B717;
+                }
+
+                &.forbidden span {
+                    background-color: #868686;
+                }
+
+                &.afternoon span {
+                    border: 3px solid #2E6DE7;
+                }
+
+                &.allday span {
+                    background-color: #28F1B5;
+                }
+            }
+        }
+
+        textarea {
+            margin-top: 20px;
+            background-color: #ECECEC;
+            color: #404040;
+            border: none;
+            padding-top: 10px;
+            padding-left: 15px;
+            height: 100px;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+
+        .btn {
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            padding: 10px 30px;
+            border: none;
+        }
+
+        .cancel-btn {
+            background: linear-gradient(180deg, #36CFF0 0%, #5997F3 100%);
+        }
+
+        .confirm-btn {
+            background: linear-gradient(180deg, #4BEE79 0%, #29C85F 100%);
+        }
+    }
+}
+
+.outoffice-registration-backdrop {
+    opacity: 0.8 !important;
+}

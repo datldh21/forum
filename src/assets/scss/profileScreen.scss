@@ -1,0 +1,51 @@
+.profile-screen {
+    font-family: var(--font-family);
+    margin-top: 30px;
+
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .wrap-leaderboard {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 15px;
+            height: 665px;
+            margin-top: 30px;
+
+            .ribbon {
+                text-align: center;
+                transform: translateY(-30px);
+            }
+
+            .leaderboard {
+                transform: translateY(-40px);
+                height: 590px;
+                border: 2px solid #f0f0f0;
+                border-radius: 15px;
+                background-color: #E5E5F3;
+                margin: 10px;
+            }
+        }
+
+        .right {
+            
+            .navbar-position {
+                width: 880px;
+            }
+
+            .info-user {
+                flex: 2;
+                margin: 10px;
+                border: 2px solid #f0f0f0;
+                border-radius: 15px;
+                background-color: #ffff;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            flex-direction: column;
+        }
+    }
+}

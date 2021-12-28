@@ -1,0 +1,154 @@
+.leaderboard-total {
+    position: relative;
+    margin-top: 0 0 0 6%;
+    height: 585px;
+    overflow-y: scroll;
+
+    .leaderboard-item {
+        margin: 0 10px;
+        background-color: #fff;
+        border-radius: 10px;
+
+        .user-leaderboard {
+            margin: 12px 0;
+            margin-bottom: 5px;
+            border: 1px solid #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            height: 60px;
+            position: relative;
+
+            .wrap-user-rank {
+                width: 55px;
+                border-radius: 10px;
+                font-family: var(--font-leaderboard);
+
+                .user-rank {
+                    transform: translateY(15px);
+                    position: absolute;
+                    justify-content: center;
+                    color: #21B9F9 !important;
+                    display: none;
+                    font-weight: 400;
+                    font-size: 20px;
+                }
+            }
+
+            .user-avatar {
+                position: absolute;
+                left: 55px;
+            }
+
+            .user-name {
+                position: absolute;
+                padding: 24px 0px 22px 70px;
+                left: 45px;
+                line-height: 15px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 400;
+                color: #858585;
+            }
+
+            .user-thunder-icon {
+                position: absolute;
+                right: 50px;
+                top: 20px;
+            }
+
+            .user-point {
+                position: absolute;
+                right: 10px;
+                font-size: 16px;
+                line-height: 17px;
+                text-align: right;
+                font-weight: 700;
+                padding-top: 24px;
+                color: #32495e;
+            }
+        }
+    }
+
+    .rank-1 {
+
+        .wrap-user-rank {
+            background-color: #FFEDB3;
+        }
+
+        .user-rank {
+            margin-left: 10px;
+        }
+    }
+
+    .rank-2 {
+
+        .wrap-user-rank {
+            background-color: #DBF7FF;
+        }
+
+        .user-rank {
+            margin-left: 10px;
+        }
+    }
+
+    .rank-3 {
+
+        .wrap-user-rank {
+            background-color: #FFDFD2;
+        }
+
+        .user-rank {
+            margin-left: 10px;
+        }
+    }
+
+    @for $i from 4 through 30 {
+        .rank-#{$i} {
+            .wrap-user-rank {
+                background-color: #F3F3FF;
+            }
+    
+            .user-rank {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .other-user {
+        
+        .wrap-user-rank {
+
+            .user-rank {
+                display: block !important;
+            }
+        }
+    }
+
+    .active-user {
+        position: sticky;
+        bottom: 10px;
+        .user-leaderboard {
+            border: 3px solid #7BABFF;
+            color: #32495e !important;
+            border-top-width: 50% !important;
+        }
+        
+        .wrap-user-rank {
+
+            .user-rank {
+                display: block !important;
+            }
+        }
+
+        .user-name {
+            color: #32495e !important;
+            font-weight: bold !important;
+        }
+    }
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}

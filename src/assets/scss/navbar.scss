@@ -1,0 +1,106 @@
+.menu-bar {
+    background: #fff;
+    font-family: var(--font-family);
+    height: 60px;
+    width: 870px;
+    border-radius: 20px;
+    margin-left: 10px;
+
+    .navbar {
+        
+        .split {
+            margin-left: 65px;
+            transform: translateY(-5px);
+        }
+
+        .dashboard-bar {   
+            margin-left: 45px;
+            display: block;
+            .dashboard-unactive {
+                .path-1 {
+                    fill: #C7C7C7;
+                }
+                .path-2 {
+                    fill: #C7C7C7;
+                }
+            }
+
+            .split-active {
+                position: absolute;
+                transform: translateX(-30px);
+            }
+
+            .dashboard-unactive:hover {
+                .path-1 {
+                    fill: #666666;
+                }
+                .path-2 {
+                    fill: #666666;
+                }
+            }
+        }
+
+        .shop-bar {   
+            margin-left: 45px;
+            display: block;
+            .shop-active {
+                .path-1 {
+                    fill: #5274F3;
+                }
+                .path-2 {
+                    fill: #5274F3;
+                }
+            }
+
+            .split-active {
+                position: absolute;
+                transform: translateX(-38px);
+            }
+
+            .shop-unactive:hover {
+                .path-1 {
+                    fill: #666666;
+                }
+                .path-2 {
+                    fill: #666666;
+                }
+            }
+        }
+
+        .notifications-bar {
+            margin-left: 45px;
+            display: block;
+            .notifications-active {
+                .path-1 {
+                    fill: #5274F3;
+                }
+                .path-2 {
+                    fill: #5274F3;
+                }
+            }
+
+            .split-active {
+                position: absolute;
+                transform: translateX(-38px);
+            }
+
+            .notifications-unactive:hover {
+                .path-1 {
+                    fill: #666666;
+                }
+                .path-2 {
+                    fill: #666666;
+                }
+            }
+
+            .dot-notification{
+                position: absolute;
+                right: 35px;
+                background-color: red;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

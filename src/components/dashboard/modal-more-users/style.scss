@@ -1,0 +1,36 @@
+.modal-more-users {
+  background-color: #fff;
+  border: 2px solid #f3f3f3;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 1;
+  transform: translate(310px, 60px);
+  cursor: pointer;
+  .user {
+    display: flex;
+    flex-flow: row nowrap;
+    padding-right: 10px;
+    .user-avatar {
+      .unactive-user-avatar {
+        width: 53px;
+        height: 53px;
+        border-radius: 35px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 3px solid white;
+      }
+
+      .active-user-avatar {
+        width: 53px;
+        height: 53px;
+        border-radius: 35px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 3px solid #474ee5;
+      }
+    }
+    .user-name {
+      transform: translate(0px, 20px);
+    }
+  }
+}

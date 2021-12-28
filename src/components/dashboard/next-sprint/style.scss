@@ -1,0 +1,145 @@
+.next-sprint {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 30px;
+
+  .button-line {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    width: 250px;
+    background-color: #fff;
+    .btn {
+      margin: 10px;
+    }
+    .active-sprint-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+    .back-log-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+    .next-sprint-active-btn {
+      font-size: 20px;
+      font-weight: 400;
+      background-color: #f3f3f3;
+      border-radius: 10px;
+      margin: 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      p {
+        transform: translate(5px, 5px);
+      }
+    }
+  }
+
+  .next-sprint-screen {
+    display: flex;
+    flex-direction: column;
+    width: 1060px;
+
+    .next-sprint-task {
+      display: flex;
+      flex-direction: column;
+
+      .sprint-name {
+        margin-left: 30px;
+      }
+
+      .line-1 {
+        display: flex;
+        flex-direction: row;
+
+        .search-task {
+          margin-left: 30px;
+          transform: translateY(10px);
+          position: relative;
+
+          .icon {
+            position: absolute;
+            width: 27px;
+            transform: translate(10px, 10px);
+          }
+
+          input {
+            padding: 10px 10px 10px 50px;
+            border: 2px solid #f3f3f3;
+            border-radius: 10px;
+          }
+        }
+
+        .avatar-user {
+          margin-left: 30px;
+          display: flex;
+          justify-content: flex-start;
+          img {
+            width: 53px;
+            height: 53px;
+            border-radius: 35px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid white;
+          }
+        }
+      }
+
+      .list-task-next-sprint {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 30px;
+        background-color: #fff;
+        border-radius: 30px;
+        height: 680px;
+        overflow-y: scroll;
+
+        .wrap-task {
+          .task-box {
+            margin: 10px 15px;
+            .task-content .line .line-2 {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              margin-top: 15px;
+              .right {
+                display: flex;
+                flex-direction: row;
+                .assignee {
+                  transform: translateY(-5px);
+                }
+                .wrap-status-name {
+                  display: none;
+                }
+              }
+            }
+          }
+          .task-btn {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
