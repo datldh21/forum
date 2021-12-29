@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router';
 import Url from '../../util/url';
+import "./login.scss";
 
 const Login = (props) => {
     const history = useHistory();
