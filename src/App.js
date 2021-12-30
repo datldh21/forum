@@ -18,9 +18,7 @@ function App() {
         <div className="App">
             <Router>
                 <div className="app-main">
-                    <div className="header container">
-                        <Header />
-                    </div>
+                    <Header />
                     <Switch>
                         <Route exact path="/login">
                             <Login changePage={() => setPage("Login")} />
