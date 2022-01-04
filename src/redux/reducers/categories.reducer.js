@@ -1,12 +1,12 @@
 const initState = [];
 
-const Sprint = (state = initState, action) => {
+const Categories = (state = initState, action) => {
     switch (action.type) {
-        case "SET_SPRINT":
+        case 'SET_CATEGORIES':
             return action.data;
         default:
             return state;
     }
 };
 
-export default Sprint;
+export default Categories;
