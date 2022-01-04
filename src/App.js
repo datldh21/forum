@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import { useDispatch } from "react-redux";
 import Home from "./components/home";
 import { useEffect, useState } from "react";
+import Topic from "./components/topic";
 
 function App() {
     const [page, setPage] = useState("");
@@ -28,6 +29,12 @@ function App() {
                             path="/"
                             component={Home}
                             changePage={() => setPage("home")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/topic"
+                            component={Topic}
+                            changePage={() => setPage("topic")}                        
                         />
                     </Switch>
                 </div>
