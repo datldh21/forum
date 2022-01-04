@@ -6,7 +6,7 @@
     border: 1px solid #f3f3f3;
 
     .column-1 {
-        flex: 2;
+        flex: 1;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
@@ -22,6 +22,5 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-around;
-        transform: translateX(50px);
     }
 }

@@ -1,0 +1,36 @@
+.last-post {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .line-1 {
+        display: flex;
+        flex-direction: row;
+
+        .avatar-user {
+            img {
+                width: 25px;
+                height: 25px;
+                border-radius: 20px;
+            }
+        }
+
+        .date {
+            font-size: 14px;
+            margin-left: 5px;
+            color: #6c757d;
+            text-decoration: underline;
+        }
+    }
+
+    .content {
+        font-size: 14px;
+        color: #333;
+        width: 300px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+}

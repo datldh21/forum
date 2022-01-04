@@ -1,4 +1,5 @@
 import "./style.scss";
+import split from "../../assets/images/split.svg";
 
 const Category = (props) => {
     const category = props?.category;
@@ -28,6 +29,7 @@ const Category = (props) => {
                     <div className="quantity">{postCount}</div>
                     <div className="posts">POSTS</div>
                 </div>
+                <img className="split" src={split} />
             </div>
         </div>
     )
