@@ -1,11 +1,12 @@
 const initState = [];
-const HeaderInfo = (state = initState, action) => {
+
+const Categories = (state = initState, action) => {
     switch (action.type) {
-        case 'SET_HEADER_INFO':
+        case 'SET_CATEGORIES':
             return action.data;
         default:
             return state;
     }
 };
 
-export default HeaderInfo;
+export default Categories;

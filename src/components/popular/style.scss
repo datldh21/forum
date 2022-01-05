@@ -1,0 +1,24 @@
+.popular {
+    .title {
+        padding: 15px;
+        color: #6c757d;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+
+        .home {
+            margin-right: 5px;
+            color: #337ab7;
+            cursor: pointer;
+        }
+    }
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .new-topic {
+            margin-left: 15px;
+        }
+    }
+}

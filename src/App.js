@@ -1,18 +1,14 @@
 import "./App.scss";
 import Login from "./components/login/Login";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import Profile from "./components/user/index";
-import UserScreen from "./components/user/UserScreen";
 import AuthRoute from "./components/AuthRoute";
-import Items from "./components/item/index";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import { useDispatch } from "react-redux";
 import Home from "./components/home";
-import Dashboard from "./components/dashboard";
-import BackLog from "./components/dashboard/backlog";
-
 import { useEffect, useState } from "react";
-import NextSprint from "./components/dashboard/next-sprint";
+import Topic from "./components/topic";
+import Popular from "./components/popular";
+import Recent from "./components/recent";
 
 function App() {
     const [page, setPage] = useState("");
@@ -25,72 +21,34 @@ function App() {
         <div className="App">
             <Router>
                 <div className="app-main">
-                    <div className="header container">
-                        <Header page={page} />
-                    </div>
+                    <Header />
                     <Switch>
                         <Route exact path="/login">
                             <Login changePage={() => setPage("Login")} />
                         </Route>
                         <AuthRoute
                             exact
-                            path="/profile"
-                            component={Profile}
-                            changePage={() => setPage("Profile")}
-                        />
-                        <AuthRoute
-                            exact
-                            path="/item"
-                            component={Items}
-                            changePage={() => setPage("Item")}
-                        />
-                        <AuthRoute
-                            exact
                             path="/"
                             component={Home}
-                            changePage={() => setPage("Home")}
+                            changePage={() => setPage("home")}                        
                         />
                         <AuthRoute
                             exact
-                            path="/dashboard"
-                            component={Home}
-                            changePage={() => setPage("Dashboard")}
+                            path="/category/:id"
+                            component={Topic}
+                            changePage={() => setPage("topic")}                        
                         />
                         <AuthRoute
                             exact
-                            path="/user/:id"
-                            component={UserScreen}
-                            changePage={() => setPage("Profile")}
+                            path="/popular"
+                            component={Popular}
+                            changePage={() => setPage("popular")}                        
                         />
                         <AuthRoute
                             exact
-                            path="/shop"
-                            component={Home}
-                            changePage={() => setPage("Shop")}
-                        />
-                        <AuthRoute
-                            exact
-                            path="/notifications"
-                            component={Home}
-                            changePage={() => setPage("Notifications")}
-                        />
-                        <AuthRoute
-                            exact
-                            path="/active-sprint"
-                            component={Dashboard}
-                            changePage={() => setPage("active-sprint")}
-                        />
-                        <AuthRoute
-                            exact
-                            path="/back-log"
-                            component={BackLog}
-                            changePage={() => setPage("back-log")}
-                        />
-                        <AuthRoute
-                            exact
-                            path="/next-sprint"
-                            component={NextSprint}
-                            changePage={() => setPage("next-sprint")}
+                            path="/recent"
+                            component={Recent}
+                            changePage={() => setPage("recent")}                        
                         />
                     </Switch>
                 </div>

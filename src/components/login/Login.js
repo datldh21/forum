@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router';
 import Url from '../../util/url';
+import "./login.scss";
 
 const Login = (props) => {
     const history = useHistory();
@@ -50,7 +51,7 @@ const Login = (props) => {
     }
     return (
         <div className='login'>
-            {userId == null || userId == undefined ?
+            {userId === null || userId === undefined ?
                 <div>
                     <Form onSubmit={handleLogin}>
                         <Form.Group className='mb-3' controlId='formBasicEmail'>

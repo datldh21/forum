@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 15px 0px;
+    border: 1px solid #f3f3f3;
+
+    .column-1 {
+        flex: 1;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin-left: 20px;
+
+        .software-name {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .column-2 {
+        flex: 1;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+
+        .search {
+            margin-right: 40px;
+        }
+
+        .notification {
+            margin-right: 40px;
+        }
+
+        .user-avatar {
+            cursor: pointer;
+
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 45px;
+                margin-right: 40px;
+                object-fit: cover;
+            }
+        }
+
+        .log-out {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+    }
+}

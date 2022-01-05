@@ -1,0 +1,42 @@
+.topics {
+    .title {
+        padding: 15px;
+        color: #6c757d;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+
+        .home {
+            margin-right: 5px;
+            color: #337ab7;
+            cursor: pointer;
+        }
+    }
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .new-topic {
+            margin-left: 15px;
+        }
+    }
+
+    .content {
+        .topic .column-1 .text .date-and-username {
+            .category-icon {
+                display: none;
+            }
+
+            .category-name {
+                display: none;
+            }
+        }
+    }
+
+    .no-new-posts {
+        padding: 15px;
+        font-size: 20px;
+        color: #6c757d;
+    }
+}
