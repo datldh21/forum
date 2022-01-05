@@ -23,6 +23,16 @@ const Header = () => {
         dispatch({ type: "SET_TOPICS", data: null });
     }
 
+    const clickRecent = () => {
+        history.push({ pathname: '/recent' });
+        <Redirect to='/recent' />
+    }
+
+    const clickPopular = () => {
+        history.push({ pathname: '/popular' });
+        <Redirect to='/popular' />
+    }
+
     const logOut = () => {
         window.localStorage.removeItem("userInfo");
         window.location.href = "/";
@@ -35,16 +45,16 @@ const Header = () => {
                 <div className="software-name" onClick={() => clickHome()}>
                     FORUM
                 </div>
-                <div className="categories">
+                <div className="categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
                     <img src={categories} />
                 </div> 
                 <div className="unread">
                     <img src={unread} />
                 </div>
-                <div className="recent">
+                <div className="recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
                     <img src={recent} />
                 </div>
-                <div className="popular">
+                <div className="popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
                     <img src={popular} />
                 </div>
                 <div className="users">

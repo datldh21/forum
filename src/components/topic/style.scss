@@ -23,99 +23,20 @@
     }
 
     .content {
-        display: flex;
-        flex-direction: row;
-
-        .topic {
-            flex: 2.5;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 15px;
-
-            .column-1 {
-                display: flex;
-                flex-direction: row;
-
-                .user-avatar {
-                    img {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50px;
-                    }
-                }
-
-                .text {
-                    margin-left: 15px;
-                    .name {
-                        color: #6c757d;
-                        font-size: 18px;
-                        cursor: pointer;
-                    }
-
-                    .date-and-username {
-                        display: flex;
-                        flex-direction: row;
-                        font-size: 14px;
-                        color: #6c757d;
-                    }
-                }
+        .topic .column-1 .text .date-and-username {
+            .category-icon {
+                display: none;
             }
 
-            .column-2 {
-                display: flex;
-                flex-direction: row;
-
-                .vote-count {
-                    margin-right: 30px;
-
-                    .quantity {
-                        font-size: 18px;
-                        text-align: center;
-                    }
-                    .votes {
-                        font-size: 14px;
-                        color: #6c757d;
-                    }
-                }
-
-                .post-count {
-                    margin-right: 30px;
-
-                    .quantity {
-                        font-size: 18px;
-                        text-align: center;
-                    }
-                    .posts {
-                        font-size: 14px;
-                        color: #6c757d;
-                    }
-                }
-
-                .view-count {
-                    .quantity {
-                        font-size: 18px;
-                        text-align: center;
-                    }
-                    .views {
-                        font-size: 14px;
-                        color: #6c757d;
-                    }
-                }
-
-                .split {
-                    margin-left: 20px;
-                    height: 40px;
-                }
+            .category-name {
+                display: none;
             }
         }
+    }
 
-        .last-post {
-            flex: 1;
-
-            .content {
-                display: -webkit-box;
-            }
-        }
+    .no-new-posts {
+        padding: 15px;
+        font-size: 20px;
+        color: #6c757d;
     }
 }

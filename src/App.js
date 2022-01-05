@@ -8,6 +8,7 @@ import Home from "./components/home";
 import { useEffect, useState } from "react";
 import Topic from "./components/topic";
 import Popular from "./components/popular";
+import Recent from "./components/recent";
 
 function App() {
     const [page, setPage] = useState("");
@@ -42,6 +43,12 @@ function App() {
                             path="/popular"
                             component={Popular}
                             changePage={() => setPage("popular")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/recent"
+                            component={Recent}
+                            changePage={() => setPage("recent")}                        
                         />
                     </Switch>
                 </div>
