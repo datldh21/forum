@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import Topic from "./components/topic";
 import Popular from "./components/popular";
 import Recent from "./components/recent";
+import Users from "./components/users";
+import Profile from "./components/profile";
 
 function App() {
     const [page, setPage] = useState("");
@@ -49,6 +51,18 @@ function App() {
                             path="/recent"
                             component={Recent}
                             changePage={() => setPage("recent")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/users"
+                            component={Users}
+                            changePage={() => setPage("users")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/user/:id"
+                            component={Profile}
+                            changePage={() => setPage("user")}                        
                         />
                     </Switch>
                 </div>

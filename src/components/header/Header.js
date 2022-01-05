@@ -16,6 +16,8 @@ const Header = () => {
     const dispatch = useDispatch();
     const headerInfo = useSelector((state) => state.headerInfo);
     const userAvatar = headerInfo?.avatar;
+    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const userID = userInfo?._id;
 
     const clickHome = () => {
         history.push({ pathname: '/' });
@@ -31,6 +33,16 @@ const Header = () => {
     const clickPopular = () => {
         history.push({ pathname: '/popular' });
         <Redirect to='/popular' />
+    }
+
+    const clickUsers = () => {
+        history.push({ pathname: '/users' });
+        <Redirect to='/users' />
+    }
+
+    const clickProfile = () => {
+        history.push({ pathname: `/user/${userID}` });
+        <Redirect to='/user' />
     }
 
     const logOut = () => {
@@ -57,7 +69,7 @@ const Header = () => {
                 <div className="popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
                     <img src={popular} />
                 </div>
-                <div className="users">
+                <div className="users" onClick={() => clickUsers()} style={{cursor: "pointer"}}>
                     <img src={users} />
                 </div>
             </div>
@@ -69,7 +81,7 @@ const Header = () => {
                 <div className="notification">
                     <img src={notification} />
                 </div>
-                <div className="user-avatar">
+                <div className="user-avatar" onClick={() => clickProfile()}>
                     <img src={userAvatar} />
                 </div>
                 <div className="log-out" onClick={() => logOut()}>
