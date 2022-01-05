@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import Home from "./components/home";
 import { useEffect, useState } from "react";
 import Topic from "./components/topic";
+import Popular from "./components/popular";
 
 function App() {
     const [page, setPage] = useState("");
@@ -32,9 +33,15 @@ function App() {
                         />
                         <AuthRoute
                             exact
-                            path="/topic"
+                            path="/category/:id"
                             component={Topic}
                             changePage={() => setPage("topic")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/popular"
+                            component={Popular}
+                            changePage={() => setPage("popular")}                        
                         />
                     </Switch>
                 </div>
