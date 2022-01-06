@@ -1,0 +1,61 @@
+.profile {
+    .title {
+        padding: 15px;
+        color: #6c757d;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+
+        .home {
+            margin-right: 5px;
+            color: #337ab7;
+            cursor: pointer;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        .wrap-avatar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            .user-avatar {
+                border: solid 5px #337ab7;
+                width: 130px;
+                height: 130px;
+                border-radius: 130px;
+                img {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 120px;
+                    object-fit: cover;
+                    border: solid 3px white;
+                }
+            }
+        }
+
+        .fullname {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 30px;
+            color: #6c757d;
+        }
+
+        .username {
+            text-align: center;
+            font-size: 24px;
+            color: #474d52;
+        }
+
+        .join-date {
+            text-align: center;
+        }
+
+        .about {
+            text-align: center;
+        }
+    }
+}
