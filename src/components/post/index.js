@@ -2,9 +2,15 @@ import "./style.scss";
 import moment from "moment";
 import like from "../../assets/images/post/like.svg";
 import dislike from "../../assets/images/post/dislike.svg";
+import edit from "../../assets/images/post/edit.svg";
+import EditPost from "../modal/post/editPost";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Post = (props) => {
     const post = props?.post;
+    const headerInfo = useSelector((state) => state.headerInfo);
+    const [showEditPostModal, setShowEditPostModal] = useState(false);
 
     return (
         <div className="post">
@@ -23,6 +29,20 @@ const Post = (props) => {
                     <div className="like"><img src={like}/></div>
                     <div className="votes">{post?.votes}</div>
                     <div className="dislike"><img src={dislike}/></div>
+                    {post.userId == headerInfo._id ? (
+                        <>
+                            <div className="edit" onClick={() => setShowEditPostModal(true)}>
+                                <img src={edit}/>
+                            </div>
+                            {showEditPostModal && (
+                                <EditPost
+                                    id={post._id}
+                                    show={showEditPostModal}
+                                    onHide={() => setShowEditPostModal(false)}
+                                />
+                            )}
+                        </>
+                    ) : null}
                 </div>
             </div>
         </div>
