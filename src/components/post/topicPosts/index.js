@@ -59,7 +59,7 @@ const TopicPosts = () => {
                                 <div className="quantity">{topic?.viewCount}</div>
                             </div>
                         </div>
-                        <Button className="reply">Reply</Button>
+                        <Button className="reply">New Post</Button>
                     </div>
                 </div>
             )}
