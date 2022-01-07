@@ -14,7 +14,7 @@ const Category = (props) => {
     
     const clickCategory = (id) => {
         history.push({ pathname: `/category/${id}/` });
-        <Redirect to="topic" />
+        <Redirect to="topics" />
     }
 
     return (

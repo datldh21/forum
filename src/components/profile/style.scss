@@ -13,9 +13,12 @@
         }
     }
 
-    .content {
+    .content-profile {
         display: flex;
         flex-direction: column;
+        border-bottom: solid 1px #bcc4cc;
+        margin-bottom: 30px;
+        padding-bottom: 45px;
 
         .wrap-avatar {
             display: flex;
@@ -56,6 +59,13 @@
 
         .about {
             text-align: center;
+        }
+    }
+
+    .user-posts {
+        .user-posts-title {
+            padding: 0 15px 15px 15px;
+            font-size: 32px;
         }
     }
 }

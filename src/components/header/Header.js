@@ -1,6 +1,5 @@
 import "./header.scss";
 import categories from "../../assets/images/header/category.svg";
-import unread from "../../assets/images/header/unread.svg";
 import recent from "../../assets/images/header/recent.svg";
 import popular from "../../assets/images/header/popular.svg";
 import users from "../../assets/images/header/user.svg";
@@ -60,9 +59,6 @@ const Header = () => {
                 <div className="categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
                     <img src={categories} />
                 </div> 
-                <div className="unread">
-                    <img src={unread} />
-                </div>
                 <div className="recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
                     <img src={recent} />
                 </div>

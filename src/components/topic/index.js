@@ -1,13 +1,15 @@
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, useParams } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Url from "../../util/url";
 import axios from "axios";
 import ShowTopic from "./showTopic";
+import CreateTopic from "../modal/topic/createTopic";
 
 const Topic = () => {
+    const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
     const topics = useSelector((state) => state.topics);
     const categoryName = useSelector((state) => state.categoryName);
     const categoryId = useParams().id;
@@ -61,10 +63,17 @@ const Topic = () => {
             </div>
 
             <div className="button">
-                <Button className="new-topic">
+                <Button className="new-topic" onClick={() => setShowCreateTopicModal(true)}>
                     New Topic
                 </Button>
             </div>
+            
+            {showCreateTopicModal && (
+                <CreateTopic
+                    show={showCreateTopicModal}
+                    onHide={() => setShowCreateTopicModal(false)}
+                />
+            )}
 
             {topics != null ? (
                 <ShowTopic
@@ -73,6 +82,7 @@ const Topic = () => {
             ) : (
                 <div className="no-new-posts">No new posts</div>
             )}
+
         </div>
     )
 }

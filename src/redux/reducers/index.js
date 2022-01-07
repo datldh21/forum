@@ -7,6 +7,8 @@ import Topics from "./topics.reducer"
 import CategoryName from "./categoryName.reducer";
 import Users from "./users.reducer";
 import InfoUser from "./infoUser.reducer";
+import UserPosts from "./userPosts.reducer";
+import TopicPosts from "./topicPosts.reducer";
 
 export default combineReducers({
     page: Page,
@@ -17,4 +19,6 @@ export default combineReducers({
     categoryName: CategoryName,
     users: Users,
     infoUser: InfoUser,
+    userPosts: UserPosts,
+    topicPosts: TopicPosts,
 });
