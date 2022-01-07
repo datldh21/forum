@@ -1,0 +1,72 @@
+.post {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    margin-left: 50px;
+    border-left: solid 2px #a0c4e4;
+
+    .user-avatar {
+        margin-right: 15px;
+        transform: translateX(-45px);
+        img {
+            width: 55px;
+            height: 55px;
+            border-radius: 55px;
+            border: solid 5px white;
+        }
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 1200px;
+        min-height: 100px;
+        transform: translateX(-40px);
+
+        .line-1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            .user-name {
+                color: #337ab7;
+            }
+
+            .date {
+                color: #6c757d;
+                font-size: 14px;
+                text-decoration: underline;
+            }
+        }
+
+        .line-3 {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+            .reply {
+                margin-right: 25px;
+                cursor: pointer;
+            }
+
+            .quote {
+                margin-right: 25px;
+                cursor: pointer;
+            }
+
+            .like {
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .votes {
+                margin-right: 10px;
+            }
+
+            .dislike {
+                cursor: pointer;
+            }
+        }
+    }
+}

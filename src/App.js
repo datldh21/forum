@@ -11,6 +11,7 @@ import Popular from "./components/popular";
 import Recent from "./components/recent";
 import Users from "./components/users";
 import Profile from "./components/profile";
+import TopicPosts from "./components/post/topicPosts";
 
 function App() {
     const [page, setPage] = useState("");
@@ -63,6 +64,12 @@ function App() {
                             path="/user/:id"
                             component={Profile}
                             changePage={() => setPage("user")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/topic/:id"
+                            component={TopicPosts}
+                            changePage={() => setPage("posts")}                        
                         />
                     </Switch>
                 </div>

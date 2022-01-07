@@ -6,11 +6,13 @@ import moment from "moment";
 import split from "../../assets/images/split.svg";
 import LastPost from "../post/lastpost";
 import axios from "axios";
+import { useHistory, Redirect } from "react-router";
 
 const ShowTopic = (props) => {
     const topics = props?.topics;
     const posts = useSelector((state) => state.posts);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const fetchPosts = async () => {
         const res = await axios.get(Url("post"));
@@ -31,18 +33,25 @@ const ShowTopic = (props) => {
         }
     };
 
+    const clickTopic = (id) => {
+        history.push({ pathname: `/topic/${id}` });
+        <Redirect to='/posts' />
+    }
+
     return (
         <div>
             {topics && topics.length > 0 && topics.map((topic, index) => {
                 return (
-                    <div className="content">
+                    <div className="content" key={index}>
                         <div className="topic">
                             <div className="column-1">
                                 <div className="user-avatar">
                                     <img src={topic?.user[0]?.avatar} />
                                 </div>
                                 <div className="text">
-                                    <div className="name">{topic?.name}</div>
+                                    <div className="name" onClick={() => clickTopic(topic?._id)}>
+                                        {topic?.name}
+                                    </div>
                                     <div className="date-and-username">
                                         <div className="category-icon">
                                             <img src={topic?.category[0]?.icon} />
