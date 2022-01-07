@@ -1,7 +1,6 @@
 import "./createTopic.scss";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
 import { Form, FormControl, Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import Url from "../../../util/url";
@@ -12,8 +11,8 @@ const CreateTopic = (props) => {
     const [startDate, setStartDate] = useState(new Date());
     const userId = useSelector((state) => state.headerInfo?._id);
     const categories = useSelector((state) => state.categories);
-
-    console.log(userId);
+    const categoryNow = useSelector((state) => state.categoryNow);
+    const dispatch = useDispatch();
     
     const handleCategory = async (e) => {
         const value = e.target.value;
@@ -23,6 +22,13 @@ const CreateTopic = (props) => {
     const handleName = async (e) => {
         const value = e.target.value;
         setName(value);
+    }
+
+    const fetchCategoryTopics = async (e) => {
+        const res = await axios.get(Url("topic/category/" + categoryId));
+        if (res.data.success) {
+            dispatch({ type: "SET_TOPICS", data: res.data.response });
+        }
     }
 
     const submit = async (e) => {
@@ -37,7 +43,8 @@ const CreateTopic = (props) => {
             viewCount: 0,
         }
         const res = await axios.post(Url("topic"), topicData);
-        console.log(topicData);
+        // const updateTopicCount = await axios.patch(Url("category/topicCount/" + categoryId)); //// Khong tat duoc modal create Topic
+        fetchCategoryTopics();
         props?.onHide();
     }
 
@@ -51,9 +58,9 @@ const CreateTopic = (props) => {
 
             <Modal.Body>
                 <Form>
-                    <div className="change-project">
+                    <div className="handle-category">
                         <Form.Select onChange={handleCategory}>
-                            <option value="1">Category: </option>
+                            <option value="1">Category</option>
                             {categories && categories.length > 0 && (
                                 categories.map((category, index) => {
                                     return (
@@ -77,7 +84,7 @@ const CreateTopic = (props) => {
                 </Form>
             </Modal.Body>
 
-            <Modal.Footer>
+            <Modal.Footer style={{justifyContent: "center"}}>
                 <Button variant="primary" className="cancel-btn" onClick={() => props.onHide()}>
                     Cancel
                 </Button>

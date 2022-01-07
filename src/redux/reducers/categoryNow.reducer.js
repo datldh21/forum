@@ -1,11 +1,11 @@
 const initState = '';
-const CategoryName = (state = initState, action) => {
+const CategoryNow = (state = initState, action) => {
     switch (action.type) {
-        case 'SET_CATEGORY_NAME':
+        case 'SET_CATEGORY_NOW':
             return action.data;
         default:
             return state;
     }
 };
 
-export default CategoryName;
+export default CategoryNow;

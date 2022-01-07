@@ -2,21 +2,21 @@ import "./style.scss";
 import axios from "axios";
 import Url from "../../../util/url";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, Fragment } from "react";
+import { useEffect, Fragment, useState } from "react";
 import { useParams } from "react-router";
 import postCount from "../../../assets/images/post/post.svg";
 import voteCount from "../../../assets/images/post/like.svg";
 import viewCount from "../../../assets/images/post/view.svg";
 import Button from "react-bootstrap/Button";
 import Post from "..";
+import CreatePost from "../../modal/post/createPost";
 
 const TopicPosts = () => {
     const topicId = useParams().id;
     const dispatch = useDispatch();
     const topicPosts = useSelector((state) => state.topicPosts);
     const topic = useSelector((state) => state?.topics[0]);
-
-    console.log(topicPosts);
+    const [showCreatePostModal, setShowCreatePostModal] = useState(false);
     
     const fetchTopicPosts = async () => {
         const res = await axios.get(Url("post/topic/" + topicId));
@@ -59,7 +59,13 @@ const TopicPosts = () => {
                                 <div className="quantity">{topic?.viewCount}</div>
                             </div>
                         </div>
-                        <Button className="reply">New Post</Button>
+                        <Button className="reply" onClick={() => setShowCreatePostModal(true)}>New Post</Button>
+                        {showCreatePostModal && (
+                            <CreatePost
+                                show={showCreatePostModal}
+                                onHide={() => setShowCreatePostModal(false)}
+                            />
+                        )}
                     </div>
                 </div>
             )}

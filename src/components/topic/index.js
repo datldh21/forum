@@ -11,9 +11,8 @@ import CreateTopic from "../modal/topic/createTopic";
 const Topic = () => {
     const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
     const topics = useSelector((state) => state.topics);
-    const categoryName = useSelector((state) => state.categoryName);
+    const categoryNow = useSelector((state) => state.categoryNow);
     const categoryId = useParams().id;
-    const categories = useSelector((state) => state.categories);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -21,9 +20,6 @@ const Topic = () => {
         const res = await axios.get(Url("topic/category/" + categoryId));
         if (res.data.success) {
             dispatch({ type: "SET_TOPICS", data: res.data.response });
-        } else {
-            dispatch({ type: "SET_TOPICS", data: null });
-            dispatch({ type: "SET_CATEGORY_NAME", data: null });
         }
     }
 
@@ -32,17 +28,15 @@ const Topic = () => {
         dispatch({ type: "SET_CATEGORIES", data: res?.data?.response });
     }
 
-    if (categories && categories.length > 0) {
-        categories.map((category) => {
-            if (category._id === categoryId) {
-                dispatch({ type: "SET_CATEGORY_NAME", data: category.name });
-            }
-        })
+    const fetchCategoryNow = async () => {
+        const res = await axios.get(Url("category/" + categoryId));
+        dispatch({ type: "SET_CATEGORY_NOW", data: res?.data?.response });
     }
     
     useEffect(() => {
         fetchTopics();
         fetchCategories();
+        fetchCategoryNow();
     }, []);
 
     const clickHome = () => {
@@ -53,14 +47,16 @@ const Topic = () => {
 
     return (
         <div className="topics container">
-            <div className="title">
-                <div className="home" onClick={() => clickHome()}>
-                    Home
+            {categoryNow && (
+                <div className="title">
+                    <div className="home" onClick={() => clickHome()}>
+                        Home
+                    </div>
+                    <div className="category-name">
+                        / {categoryNow[0].name}
+                    </div>
                 </div>
-                <div className="category-name">
-                    / {categoryName}
-                </div>
-            </div>
+                )}
 
             <div className="button">
                 <Button className="new-topic" onClick={() => setShowCreateTopicModal(true)}>

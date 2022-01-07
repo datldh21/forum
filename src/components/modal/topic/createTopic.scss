@@ -1,0 +1,48 @@
+.modal-content {
+    border: none;
+    background: #fff;
+}
+
+.modal-header {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: #337ab7;
+
+    .modal-title {
+        font-size: 26px;
+        text-transform: uppercase;
+        color: white;
+        font-weight: normal;
+    }
+}
+
+.modal-body {
+    .change-project .form-select {
+        border-radius: 20px;
+    }
+    .change-content .content .form-control {
+        border-radius: 20px;
+    }
+    .change-price .price .form-control {
+        border-radius: 20px;
+    }
+}
+
+.modal-footer {
+    .btn {
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        padding: 10px 30px;
+        border: none;
+    }
+
+    .cancel-btn {
+        background: linear-gradient(180deg, #eac953 0%, #d8b01f 100%);
+    }
+
+    .confirm-btn {
+        background: linear-gradient(180deg, #4bee79 0%, #29c85f 100%);
+    }
+}
