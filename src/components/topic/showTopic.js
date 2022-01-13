@@ -33,8 +33,9 @@ const ShowTopic = (props) => {
         }
     };
 
-    const clickTopic = (id) => {
+    const clickTopic = async (id) => {
         history.push({ pathname: `/topic/${id}` });
+        const res = await axios.patch(Url("topic/viewCount/" + id));
         <Redirect to='/posts' />
     }
 

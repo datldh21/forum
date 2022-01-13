@@ -43,7 +43,7 @@ const CreateTopic = (props) => {
             viewCount: 0,
         }
         const res = await axios.post(Url("topic"), topicData);
-        // const updateTopicCount = await axios.patch(Url("category/topicCount/" + categoryId)); //// Khong tat duoc modal create Topic
+        const updateTopicCount = await axios.patch(Url("category/topicCount/" + categoryId));
         fetchCategoryTopics();
         props?.onHide();
     }

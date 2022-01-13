@@ -17,6 +17,7 @@
         "axios": "^0.21.1",
         "bootstrap": "^5.1.1",
         "dotenv": "^10.0.0",
+        "html-react-parser": "^1.4.5",
         "moment": "^2.29.1",
         "node-sass": "5.0.0",
         "react": "^17.0.2",

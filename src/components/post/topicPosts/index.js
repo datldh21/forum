@@ -45,7 +45,12 @@ const TopicPosts = () => {
                     <div className="info-topic-line">
                         <div className="left">
                             <div className="category-icon"><img src={topic?.category[0]?.icon}/></div>
-                            <div className="category-name">{topic?.category[0]?.name}</div>
+                            <a 
+                                className="category-name"
+                                href={"/category/" + topic?.categoryId}
+                            >
+                                {topic?.category[0]?.name}
+                            </a>
                             <div className="posts-count">
                                 <img className="icon" src={postCount} />
                                 <div className="quantity">{topic?.postCount}</div>

@@ -57,6 +57,11 @@ const EditPost = (props) => {
         dispatch({ type: "SET_TOPIC_POSTS", data: res?.data?.response });
     }
 
+    const fetchTopic = async () => {
+        const res = await axios.get(Url("topic/" + topicId));
+        dispatch({ type: "SET_TOPICS", data: res?.data?.response });
+    }
+
     const edit = async (e) => {
         e.preventDefault();
         const dataUpdate = {
@@ -74,6 +79,9 @@ const EditPost = (props) => {
 
     const deletePost = async () => {
         const res = await axios.delete(Url("post/" + id));
+        const updatePostCountTopic = await axios.patch(Url("topic/postCount/dec/" + topicId));
+        const updatePostCountCategory = await axios.patch(Url("category/postCount/dec/" + categoryId));
+        fetchTopic();
         fetchTopicPosts();
         props?.onHide();
     }

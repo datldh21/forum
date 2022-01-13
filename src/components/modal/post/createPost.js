@@ -24,6 +24,11 @@ const CreatePost = (props) => {
         dispatch({ type: "SET_TOPIC_POSTS", data: res?.data?.response });
     }
 
+    const fetchTopic = async () => {
+        const res = await axios.get(Url("topic/" + topic[0]._id));
+        dispatch({ type: "SET_TOPICS", data: res?.data?.response });
+    }
+
     const submit = async () => {
         const postData = {
             categoryId: topic[0].categoryId,
@@ -35,6 +40,9 @@ const CreatePost = (props) => {
         }
 
         const newPost = await axios.post(Url("post"), postData);
+        const updatePostCountTopic = await axios.patch(Url("topic/postCount/inc/" + topic[0]._id));
+        const updatePostCountCategory = await axios.patch(Url("category/postCount/inc/" + topic[0].categoryId));
+        fetchTopic();
         fetchTopicPosts();
         props?.onHide();
     }

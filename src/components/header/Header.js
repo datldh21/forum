@@ -56,30 +56,30 @@ const Header = () => {
                 <div className="software-name" onClick={() => clickHome()}>
                     FORUM
                 </div>
-                <div className="categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
+                <div className="categories" title="Categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
                     <img src={categories} />
                 </div> 
-                <div className="recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
+                <div className="recent" title="Recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
                     <img src={recent} />
                 </div>
-                <div className="popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
+                <div className="popular" title="Popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
                     <img src={popular} />
                 </div>
-                <div className="users" onClick={() => clickUsers()} style={{cursor: "pointer"}}>
+                <div className="users" title="Users" onClick={() => clickUsers()} style={{cursor: "pointer"}}>
                     <img src={users} />
                 </div>
             </div>
 
             <div className="column-2">
-                <div className="search">
+                <div className="search" title="Search" style={{cursor: "pointer"}}>
                     <img src={search} />
                 </div>
-                <div className="notification">
+                <div className="notification" title="Notifications" style={{cursor: "pointer"}}>
                     <img src={notification} />
                 </div>
-                <div className="user-avatar" onClick={() => clickProfile()}>
+                <a className="user-avatar" href={'/user/' + userID}>
                     <img src={userAvatar} />
-                </div>
+                </a>
                 <div className="log-out" onClick={() => logOut()}>
                     <img src={logout} />
                 </div>

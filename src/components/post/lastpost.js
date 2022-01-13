@@ -1,5 +1,6 @@
 import "./lastpost.scss";
 import moment from "moment";
+import parse from 'html-react-parser';
 
 const LastPost = (props) => {
     const post = props?.post;
@@ -20,7 +21,7 @@ const LastPost = (props) => {
                         </div>
                     </div>
                     <div className="content">
-                        {content}
+                        {parse(content)}
                     </div>
                 </div>
             ) : (
