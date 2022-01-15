@@ -7,6 +7,7 @@ import Url from "../../util/url";
 import moment from "moment";
 import Post from "../post";
 import { Button } from "react-bootstrap";
+import Edit from "../../assets/images/Edit.svg";
 
 const Profile = () => {
     const userId = useParams().id;
@@ -89,6 +90,11 @@ const Profile = () => {
                         </div>
                         <div className="fullname">
                             {infoUser.fullName}
+                            {infoUser._id == headerInfo._id && (
+                                <a href={"/user/editInfo/" + userId}>
+                                    <img className="edit-icon" title="Edit Info" src={Edit} />
+                                </a>
+                            )}
                         </div>
                         <div className="username">
                             @{infoUser.userName}

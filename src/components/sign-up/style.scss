@@ -1,0 +1,49 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(243, 240, 240);
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .content-signup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .form-group {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+        }
+    
+        select {
+            width: 800px;
+            height: 45px;
+            padding: 0px 10px;
+            border: 2px solid #ccc;
+        }
+    
+        input {
+            width: 800px;
+            height: 45px;
+            padding: 0px 10px;
+            border: 2px solid #ccc;
+        }
+
+        .signup-btn {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            margin-top: 15px;
+            padding: 8px 25px;
+            width: 200px;
+            transform: translateX(855px);
+        }
+    }
+}

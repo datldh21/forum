@@ -1,5 +1,6 @@
 import "./App.scss";
 import Login from "./components/login/Login";
+import SignUp from "./components/sign-up";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import AuthRoute from "./components/AuthRoute";
 import Header from "./components/header/Header";
@@ -13,6 +14,7 @@ import Users from "./components/users";
 import Profile from "./components/profile";
 import TopicPosts from "./components/post/topicPosts";
 import SearchScreen from "./components/search-screen";
+import EditInfo from "./components/edit-info";
 
 function App() {
     const [page, setPage] = useState("");
@@ -29,6 +31,9 @@ function App() {
                     <Switch>
                         <Route exact path="/login">
                             <Login changePage={() => setPage("Login")} />
+                        </Route>
+                        <Route exact path="/signup">
+                            <SignUp changePage={() => setPage("Signup")} />
                         </Route>
                         <AuthRoute
                             exact
@@ -65,6 +70,12 @@ function App() {
                             path="/user/:id"
                             component={Profile}
                             changePage={() => setPage("user")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/user/editInfo/:id"
+                            component={EditInfo}
+                            changePage={() => setPage("editInfo")}                        
                         />
                         <AuthRoute
                             exact

@@ -75,7 +75,7 @@ const Header = () => {
 
     return (
         <>
-            {page != null && (
+            {page != null && page != "" && (
                 <div className="header container">
                     <div className="column-1">
                         <div className="software-name" onClick={() => clickHome()}>
