@@ -1,5 +1,6 @@
 import "./App.scss";
 import Login from "./components/login/Login";
+import SignUp from "./components/sign-up";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import AuthRoute from "./components/AuthRoute";
 import Header from "./components/header/Header";
@@ -30,6 +31,9 @@ function App() {
                     <Switch>
                         <Route exact path="/login">
                             <Login changePage={() => setPage("Login")} />
+                        </Route>
+                        <Route exact path="/signup">
+                            <SignUp changePage={() => setPage("Signup")} />
                         </Route>
                         <AuthRoute
                             exact

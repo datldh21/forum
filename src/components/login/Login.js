@@ -59,7 +59,8 @@ const Login = (props) => {
         <div className='login'>
             {userId === null || userId === undefined ?
                 <div>
-                    <Form onSubmit={handleLogin}>
+                    <div className='Title'>Login</div>
+                    <Form onSubmit={handleLogin} style={{marginTop: "30px"}}>
                         <Form.Group className='mb-3' controlId='formBasicEmail'>
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type='email' placeholder='Enter email' name='email' onChange={handleChangeEmail} />
@@ -73,11 +74,12 @@ const Login = (props) => {
                         {
                             error ? <p style={{ color: 'red' }} >Invalid Email address or Password</p> : null
                         }
-                        <Button variant='primary' type='submit'>
+                        <Button variant='primary' type='submit' style={{marginBottom: "15px"}}>
                             Đăng nhập
                         </Button>
-
                     </Form>
+
+                    <a href={"/signup"} style={{textAlign: "center"}}>Don't have account?</a>
                 </div>
                 :
                 <Redirect to={{ pathname: '/' }} />
