@@ -8,11 +8,22 @@ import axios from "axios";
 import Url from "../../../util/url";
 
 const CreatePost = (props) => {
-    const [content, setContent] = useState(null);
+    const tag = props?.tag;
+    const [content, setContent] = useState(tag);
     const [date, setDate] = useState(new Date());
     const topic = useSelector((state) => state.topics);
     const headerInfo = useSelector((state) => state.headerInfo);
+    const topicPosts = useSelector((state) => state.topicPosts);
     const dispatch = useDispatch();
+    let noticeId = [];
+
+    if (topicPosts && topicPosts.length > 0) {
+        topicPosts.map((post) => {
+            if (post.userId != headerInfo._id) {
+                noticeId.push(post.userId)
+            }
+        })
+    }
 
     const handleContent = async (e, editor) => {
         const data = editor.getData();
@@ -39,6 +50,22 @@ const CreatePost = (props) => {
             date: date,
         }
 
+        if (noticeId.length > 0) {
+            noticeId.map((userId) => {
+                const notificationData = {
+                    userId: userId,
+                    topicId: topic[0]._id,
+                    userCreateId: headerInfo._id,
+                    date: date,
+                }
+                const noticeUserData = {
+                    notice: true
+                }
+                const res = axios.post(Url("notifications"), notificationData);
+                const updateNoticeUser = axios.patch(Url("user/info/" + userId), noticeUserData);
+            })
+        }
+
         const newPost = await axios.post(Url("post"), postData);
         const updatePostCountTopic = await axios.patch(Url("topic/postCount/inc/" + topic[0]._id));
         const updatePostCountCategory = await axios.patch(Url("category/postCount/inc/" + topic[0].categoryId));
@@ -59,6 +86,7 @@ const CreatePost = (props) => {
                 <div className="handle-content">
                     <CKEditor
                         editor={ClassicEditor}
+                        data={content}
                         onChange={handleContent}
                     />
                 </div>

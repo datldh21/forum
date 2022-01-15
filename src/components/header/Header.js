@@ -8,83 +8,125 @@ import search from "../../assets/images/header/search.svg";
 import logout from "../../assets/images/header/logout.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router";
+import axios from "axios";
+import Url from "../../util/url";
+import { useEffect, useState } from "react";
+import Notifications from "../notifications";
+import { useRef } from "react";
+import RedDot from "../../assets/images/red-dot.svg";
 
 const Header = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    let menuRef = useRef();
+    const [showNotifications, setShowNotifications] = useState(false);
     const headerInfo = useSelector((state) => state.headerInfo);
     const userAvatar = headerInfo?.avatar;
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userID = userInfo?._id;
+    const notifications = useSelector((state) => state.notifications);
+    const page = useSelector((state) => state.page);
 
     const clickHome = () => {
         history.push({ pathname: '/' });
         <Redirect to='/' />
-        dispatch({ type: "SET_TOPICS", data: null });
     }
 
-    const clickRecent = () => {
-        history.push({ pathname: '/recent' });
-        <Redirect to='/recent' />
+    const fetchNotifications = async () => {
+        const res = await axios.get(Url("notifications/user/" + userID));
+        dispatch({ type: "SET_NOTIFICATIONS", data: res.data?.response});
     }
 
-    const clickPopular = () => {
-        history.push({ pathname: '/popular' });
-        <Redirect to='/popular' />
+    const fetchHeaderInfo = async () => {
+        const res = await axios.get(Url("user/info/" + userID));
+        res.data.success && dispatch({ type: "SET_HEADER_INFO", data: res.data.response[0] });
     }
 
-    const clickUsers = () => {
-        history.push({ pathname: '/users' });
-        <Redirect to='/users' />
-    }
+    useEffect(() => {
+        let handler = (event) => {
+            if (!menuRef.current?.contains(event.target)) {
+                setShowNotifications(false)
+            }
+        }
+        document.addEventListener("mousedown", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+        }
+    });
 
-    const clickProfile = () => {
-        history.push({ pathname: `/user/${userID}` });
-        <Redirect to='/user' />
-    }
+    useEffect(() => {
+        fetchNotifications();
+    }, [userID]);
 
     const logOut = () => {
         window.localStorage.removeItem("userInfo");
         window.location.href = "/";
-
     };
 
-    return (
-        <div className="header container">
-            <div className="column-1">
-                <div className="software-name" onClick={() => clickHome()}>
-                    FORUM
-                </div>
-                <div className="categories" title="Categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
-                    <img src={categories} />
-                </div> 
-                <div className="recent" title="Recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
-                    <img src={recent} />
-                </div>
-                <div className="popular" title="Popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
-                    <img src={popular} />
-                </div>
-                <div className="users" title="Users" onClick={() => clickUsers()} style={{cursor: "pointer"}}>
-                    <img src={users} />
-                </div>
-            </div>
+    const clickNotification = async () => {
+        setShowNotifications(true);
+        const updateNoticeData = {
+            notice: false
+        }
+        const res = await axios.patch(Url("user/info/" + userID), updateNoticeData);
+        fetchHeaderInfo();
+    }
 
-            <div className="column-2">
-                <div className="search" title="Search" style={{cursor: "pointer"}}>
-                    <img src={search} />
-                </div>
-                <div className="notification" title="Notifications" style={{cursor: "pointer"}}>
-                    <img src={notification} />
-                </div>
-                <a className="user-avatar" href={'/user/' + userID}>
-                    <img src={userAvatar} />
-                </a>
-                <div className="log-out" onClick={() => logOut()}>
-                    <img src={logout} />
-                </div>
-            </div>
-        </div>
+    return (
+        <>
+            {page != null && (
+                <div className="header container">
+                    <div className="column-1">
+                        <div className="software-name" onClick={() => clickHome()}>
+                            FORUM
+                        </div>
+                        <a className="categories" title="Categories" href={'/'} style={{cursor: "pointer"}}>
+                            <img src={categories} />
+                        </a> 
+                        <a className="recent" title="Recent" href={'/recent'} style={{cursor: "pointer"}}>
+                            <img src={recent} />
+                        </a>
+                        <a className="popular" title="Popular" href={'/popular'} style={{cursor: "pointer"}}>
+                            <img src={popular} />
+                        </a>
+                        <a className="users" title="Users" href={'/users'} style={{cursor: "pointer"}}>
+                            <img src={users} />
+                        </a>
+                        <a className="search" title="Search" href={'/search'} style={{cursor: "pointer"}}>
+                            <img src={search} />
+                        </a>
+                    </div>
+
+                    <div className="column-2" ref={menuRef}>
+                        <div 
+                            className="notification-icon" 
+                            title="Notifications" 
+                            onClick={() => clickNotification()}
+                            style={{cursor: "pointer"}}
+                        >
+                            <img src={notification} />
+                            {headerInfo.notice == true && (
+                            <img className="red-dot" src={RedDot} />
+                        )}
+                        </div>
+                        {showNotifications && (
+                            <Notifications
+                                show={showNotifications}
+                                notifications={notifications}
+                                onHide={() => setShowNotifications(false)}
+                            />
+                        )}
+                        <a className="user-avatar" href={'/user/' + userID}>
+                            <img src={userAvatar} />
+                        </a>
+                        <div className="log-out" onClick={() => logOut()}>
+                            <img src={logout} />
+                        </div>
+                    </div>
+                </div>  
+            )}
+        </>    
     )
 };
 export default Header;

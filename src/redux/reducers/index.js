@@ -9,6 +9,7 @@ import Users from "./users.reducer";
 import InfoUser from "./infoUser.reducer";
 import UserPosts from "./userPosts.reducer";
 import TopicPosts from "./topicPosts.reducer";
+import Notifications from "./notifications.reducer";
 
 export default combineReducers({
     page: Page,
@@ -21,4 +22,5 @@ export default combineReducers({
     infoUser: InfoUser,
     userPosts: UserPosts,
     topicPosts: TopicPosts,
+    notifications: Notifications,
 });

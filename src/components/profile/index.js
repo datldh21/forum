@@ -6,6 +6,7 @@ import axios from "axios";
 import Url from "../../util/url";
 import moment from "moment";
 import Post from "../post";
+import { Button } from "react-bootstrap";
 
 const Profile = () => {
     const userId = useParams().id;
@@ -13,6 +14,7 @@ const Profile = () => {
     const dispatch = useDispatch();
     const infoUser = useSelector((state) => state.infoUser[0]);
     const userPosts = useSelector((state) => state.userPosts);
+    const headerInfo = useSelector((state) => state.headerInfo);
 
     const fetchInfoUser = async () => {
         const res = await axios.get(Url("user/info/" + userId));
@@ -21,7 +23,11 @@ const Profile = () => {
 
     const fetchUserPosts = async () => {
         const res = await axios.get(Url("post/user/" + userId));
-        dispatch({ type: "SET_USER_POSTS", data: res?.data?.response });
+        if (res.data.success) {
+            dispatch({ type: "SET_USER_POSTS", data: res?.data?.response });
+        } else {
+            dispatch({ type: "SET_USER_POSTS", data: null });
+        }
     }
 
     useEffect(() => {
@@ -35,17 +41,44 @@ const Profile = () => {
         dispatch({ type: "SET_TOPICS", data: null });
     }
 
+    const banUser = async () => {
+        const dataUpdate = {
+            banned: true
+        }
+        const ban = await axios.patch(Url("user/info/" + userId), dataUpdate);
+        console.log(ban);
+        fetchInfoUser();
+    }
+
+    const unbanUser = async () => {
+        const dataUpdate = {
+            banned: false
+        }
+        const ban = await axios.patch(Url("user/info/" + userId), dataUpdate);
+        fetchInfoUser();
+    }
+
     return (
         <div className="profile container">
-            {infoUser && userPosts && userPosts.length > 0 && (
+            {infoUser && (
                 <>
-                    <div className="title">
-                        <div className="home" onClick={() => clickHome()}>
-                            Home
+                    <div className="line-1">
+                        <div className="title">
+                            <div className="home" onClick={() => clickHome()}>
+                                Home
+                            </div>
+                            <div className="category-name">
+                                / {infoUser.userName}
+                            </div>
                         </div>
-                        <div className="category-name">
-                            / {infoUser.userName}
-                        </div>
+
+                        {headerInfo.role == "admin" && infoUser.banned == false && (
+                            <Button className="ban-btn" onClick={() => banUser()}>Ban</Button>
+                        )}
+                        
+                        {headerInfo.role == "admin" && infoUser.banned == true && (
+                            <Button className="unban-btn" onClick={() => unbanUser()}>Unban</Button>
+                        )}
                     </div>
 
                     <div className="content-profile">
@@ -67,7 +100,11 @@ const Profile = () => {
                             About: {infoUser.aboutMe}
                         </div>
                     </div>
+                </>
+            )}
 
+            {infoUser && userPosts && userPosts.length > 0 ? (
+                <>
                     <div className="user-posts">
                         <div className="user-posts-title">Latest posts made by {infoUser.userName}</div>
                         {userPosts.map((post, index) => {
@@ -79,6 +116,10 @@ const Profile = () => {
                         })}
                     </div>
                 </>
+            ) : (
+                <div className="no-post">
+                    This user hasn't post!
+                </div>
             )}
         </div>
     )

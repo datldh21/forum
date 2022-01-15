@@ -12,6 +12,7 @@ import Recent from "./components/recent";
 import Users from "./components/users";
 import Profile from "./components/profile";
 import TopicPosts from "./components/post/topicPosts";
+import SearchScreen from "./components/search-screen";
 
 function App() {
     const [page, setPage] = useState("");
@@ -24,7 +25,7 @@ function App() {
         <div className="App">
             <Router>
                 <div className="app-main">
-                    <Header />
+                    <Header/>
                     <Switch>
                         <Route exact path="/login">
                             <Login changePage={() => setPage("Login")} />
@@ -70,6 +71,12 @@ function App() {
                             path="/topic/:id"
                             component={TopicPosts}
                             changePage={() => setPage("posts")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/search"
+                            component={SearchScreen}
+                            changePage={() => setPage("search")}                        
                         />
                     </Switch>
                 </div>

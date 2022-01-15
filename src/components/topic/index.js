@@ -12,6 +12,7 @@ const Topic = () => {
     const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
     const topics = useSelector((state) => state.topics);
     const categoryNow = useSelector((state) => state.categoryNow);
+    const headerInfo = useSelector((state) => state.headerInfo);
     const categoryId = useParams().id;
     const history = useHistory();
     const dispatch = useDispatch();
@@ -58,11 +59,13 @@ const Topic = () => {
                 </div>
                 )}
 
-            <div className="button">
-                <Button className="new-topic" onClick={() => setShowCreateTopicModal(true)}>
-                    New Topic
-                </Button>
-            </div>
+            {headerInfo.banned == false && (
+                <div className="button">
+                    <Button className="new-topic" onClick={() => setShowCreateTopicModal(true)}>
+                        New Topic
+                    </Button>
+                </div>
+            )}
             
             {showCreateTopicModal && (
                 <CreateTopic

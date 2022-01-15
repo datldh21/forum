@@ -16,6 +16,10 @@
             font-size: 20px;
             cursor: pointer;
         }
+
+        .search {
+            margin-right: 40px;
+        }
     }
 
     .column-2 {
@@ -23,13 +27,17 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: flex-end;
+        position: relative;
 
-        .search {
-            margin-right: 40px;
-        }
+        .notification-icon {
+            transform: translateX(-40px);
+            position: relative;
 
-        .notification {
-            margin-right: 40px;
+            .red-dot {
+                position: absolute;
+                width: 10px;
+                transform: translateX(-8px);
+            }
         }
 
         .user-avatar {
