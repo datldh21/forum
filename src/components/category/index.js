@@ -1,6 +1,5 @@
 import "./style.scss";
 import split from "../../assets/images/split.svg";
-import { Redirect, useHistory } from "react-router";
 
 const Category = (props) => {
     const category = props?.category;
@@ -10,12 +9,6 @@ const Category = (props) => {
     const topicCount = category?.topicCount;
     const postCount = category?.postCount;
     const id = category?._id;
-    const history = useHistory();
-    
-    const clickCategory = (id) => {
-        history.push({ pathname: `/category/${id}/` });
-        <Redirect to="topics" />
-    }
 
     return (
         <div className="category">
@@ -24,7 +17,7 @@ const Category = (props) => {
                     <img src={icon} />
                 </div>
                 <div className="text">
-                    <div className="name" onClick={() => clickCategory(id)}>{name}</div>
+                    <a className="name" href={"/category/" + id}>{name}</a>
                     <div className="description">{description}</div>
                 </div>
             </div>

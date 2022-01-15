@@ -76,7 +76,7 @@ const Post = (props) => {
                         </>
                     )}
 
-                    {post.userId == headerInfo._id && headerInfo.banned == false ? (
+                    {post.userId == headerInfo._id && headerInfo.banned == false && (
                         <>
                             <div className="edit" onClick={() => setShowEditPostModal(true)}>
                                 Edit
@@ -89,7 +89,7 @@ const Post = (props) => {
                                 />
                             )}
                         </>
-                    ) : null}
+                    )}
                     <div className="like" onClick={() => LikeClick()}><img src={like}/></div>
                     <div className="votes">{post?.votes}</div>
                     <div className="dislike" onClick={() => DislikeClick()}><img src={dislike}/></div>
