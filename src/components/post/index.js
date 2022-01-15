@@ -10,10 +10,12 @@ import parse from 'html-react-parser';
 import axios from "axios";
 import Url from "../../util/url";
 import { useDispatch } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
 
 const Post = (props) => {
     const post = props?.post;
     const dispatch = useDispatch();
+    const history = useHistory();
     const headerInfo = useSelector((state) => state.headerInfo);
     const [showEditPostModal, setShowEditPostModal] = useState(false);
     const [showCreatePostModal, setShowCreatePostModal] = useState(false);
@@ -26,6 +28,11 @@ const Post = (props) => {
     const fetchTopicPosts = async (topicId) => {
         const res = await axios.get(Url("post/topic/" + topicId));
         dispatch({ type: "SET_TOPIC_POSTS", data: res?.data?.response });
+    }
+
+    const clickProfile = (userId) => {
+        history.push({ pathname: `/user/${userId}` });
+        <Redirect to='/user' />
     }
 
     const LikeClick = async () => {
@@ -44,7 +51,7 @@ const Post = (props) => {
 
     return (
         <div className="post">
-            <div className="user-avatar">
+            <div className="user-avatar" onClick={() => clickProfile(post?.user[0]?._id)}>
                 <img src={post?.user[0]?.avatar} />
             </div>
             <div className="column">
@@ -54,7 +61,7 @@ const Post = (props) => {
                 </div>
                 <div className="content">{parse(post?.content)}</div>
                 <div className="line-3">
-                    {post.userId !== headerInfo._id && (
+                    {post.userId !== headerInfo._id && headerInfo.banned == false && (
                         <>
                             <div className="reply" onClick={() => setShowCreatePostModal(true)}>
                                 Reply
@@ -69,7 +76,7 @@ const Post = (props) => {
                         </>
                     )}
 
-                    {post.userId == headerInfo._id ? (
+                    {post.userId == headerInfo._id && headerInfo.banned == false ? (
                         <>
                             <div className="edit" onClick={() => setShowEditPostModal(true)}>
                                 Edit

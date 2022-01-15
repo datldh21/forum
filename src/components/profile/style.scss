@@ -1,15 +1,36 @@
 .profile {
-    .title {
-        padding: 15px;
-        color: #6c757d;
-        font-size: 20px;
+    .line-1 {
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
 
-        .home {
-            margin-right: 5px;
-            color: #337ab7;
-            cursor: pointer;
+        .title {
+            padding: 15px;
+            color: #6c757d;
+            font-size: 20px;
+            display: flex;
+            flex-direction: row;
+    
+            .home {
+                margin-right: 5px;
+                color: #337ab7;
+                cursor: pointer;
+            }
+        }
+
+        .ban-btn {
+            margin-top: 15px;
+            width: 150px;
+            height: 40px;
+            background-color: #f05353;
+            border: 1px solid #f05353;
+        }
+
+        .unban-btn {
+            margin-top: 15px;
+            width: 150px;
+            height: 40px;
+            background-color: #50C98F;
+            border: 1px solid #50C98F;
         }
     }
 
@@ -67,5 +88,11 @@
             padding: 0 15px 15px 15px;
             font-size: 32px;
         }
+    }
+
+    .no-post {
+        text-align: center;
+        font-size: 18px;
+        color: #474d52;
     }
 }

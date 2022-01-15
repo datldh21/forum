@@ -13,6 +13,7 @@ import CreatePost from "../../modal/post/createPost";
 
 const TopicPosts = () => {
     const topicId = useParams().id;
+    const headerInfo = useSelector((state) => state.headerInfo);
     const dispatch = useDispatch();
     const topicPosts = useSelector((state) => state.topicPosts);
     const topic = useSelector((state) => state?.topics[0]);
@@ -64,7 +65,7 @@ const TopicPosts = () => {
                                 <div className="quantity">{topic?.viewCount}</div>
                             </div>
                         </div>
-                        <Button className="reply" onClick={() => setShowCreatePostModal(true)}>New Post</Button>
+                        {headerInfo.banned == false && <Button className="reply" onClick={() => setShowCreatePostModal(true)}>New Post</Button>}
                         {showCreatePostModal && (
                             <CreatePost
                                 tag={null}

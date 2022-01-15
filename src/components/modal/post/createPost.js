@@ -13,7 +13,17 @@ const CreatePost = (props) => {
     const [date, setDate] = useState(new Date());
     const topic = useSelector((state) => state.topics);
     const headerInfo = useSelector((state) => state.headerInfo);
+    const topicPosts = useSelector((state) => state.topicPosts);
     const dispatch = useDispatch();
+    let noticeId = [];
+
+    if (topicPosts && topicPosts.length > 0) {
+        topicPosts.map((post) => {
+            if (post.userId != headerInfo._id) {
+                noticeId.push(post.userId)
+            }
+        })
+    }
 
     const handleContent = async (e, editor) => {
         const data = editor.getData();
@@ -38,6 +48,22 @@ const CreatePost = (props) => {
             content: content,
             votes: 0,
             date: date,
+        }
+
+        if (noticeId.length > 0) {
+            noticeId.map((userId) => {
+                const notificationData = {
+                    userId: userId,
+                    topicId: topic[0]._id,
+                    userCreateId: headerInfo._id,
+                    date: date,
+                }
+                const noticeUserData = {
+                    notice: true
+                }
+                const res = axios.post(Url("notifications"), notificationData);
+                const updateNoticeUser = axios.patch(Url("user/info/" + userId), noticeUserData);
+            })
         }
 
         const newPost = await axios.post(Url("post"), postData);
