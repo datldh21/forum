@@ -8,7 +8,8 @@ import axios from "axios";
 import Url from "../../../util/url";
 
 const CreatePost = (props) => {
-    const [content, setContent] = useState(null);
+    const tag = props?.tag;
+    const [content, setContent] = useState(tag);
     const [date, setDate] = useState(new Date());
     const topic = useSelector((state) => state.topics);
     const headerInfo = useSelector((state) => state.headerInfo);
@@ -59,6 +60,7 @@ const CreatePost = (props) => {
                 <div className="handle-content">
                     <CKEditor
                         editor={ClassicEditor}
+                        data={content}
                         onChange={handleContent}
                     />
                 </div>

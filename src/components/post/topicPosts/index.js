@@ -67,6 +67,7 @@ const TopicPosts = () => {
                         <Button className="reply" onClick={() => setShowCreatePostModal(true)}>New Post</Button>
                         {showCreatePostModal && (
                             <CreatePost
+                                tag={null}
                                 show={showCreatePostModal}
                                 onHide={() => setShowCreatePostModal(false)}
                             />

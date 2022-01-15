@@ -2,8 +2,8 @@ import "./style.scss";
 import moment from "moment";
 import like from "../../assets/images/post/like.svg";
 import dislike from "../../assets/images/post/dislike.svg";
-import edit from "../../assets/images/post/edit.svg";
 import EditPost from "../modal/post/editPost";
+import CreatePost from "../modal/post/createPost";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import parse from 'html-react-parser';
@@ -16,21 +16,29 @@ const Post = (props) => {
     const dispatch = useDispatch();
     const headerInfo = useSelector((state) => state.headerInfo);
     const [showEditPostModal, setShowEditPostModal] = useState(false);
+    const [showCreatePostModal, setShowCreatePostModal] = useState(false);
 
     const fetchTopic = async (topicId) => {
         const res = await axios.get(Url("topic/" + topicId));
         dispatch({ type: "SET_TOPICS", data: res?.data?.response });
     }
 
+    const fetchTopicPosts = async (topicId) => {
+        const res = await axios.get(Url("post/topic/" + topicId));
+        dispatch({ type: "SET_TOPIC_POSTS", data: res?.data?.response });
+    }
+
     const LikeClick = async () => {
         const updateVotesPost = await axios.patch(Url("post/votes/inc/" + post._id));
         const updateVotesTopic = await axios.patch(Url("topic/voteCount/inc/" + post.topicId));
+        fetchTopicPosts(post.topicId);
         fetchTopic(post.topicId);
     }
 
     const DislikeClick = async () => {
         const updateVotesPost = await axios.patch(Url("post/votes/dec/" + post._id));
         const updateVotesTopic = await axios.patch(Url("topic/voteCount/dec/" + post.topicId));
+        fetchTopicPosts(post.topicId);
         fetchTopic(post.topicId);
     }
 
@@ -46,7 +54,21 @@ const Post = (props) => {
                 </div>
                 <div className="content">{parse(post?.content)}</div>
                 <div className="line-3">
-                    <div className="reply">Reply</div>
+                    {post.userId !== headerInfo._id && (
+                        <>
+                            <div className="reply" onClick={() => setShowCreatePostModal(true)}>
+                                Reply
+                            </div>
+                            {showCreatePostModal && (
+                                <CreatePost
+                                    tag={`@${post?.user[0]?.userName}`}
+                                    show={showCreatePostModal}
+                                    onHide={() => setShowCreatePostModal(false)}
+                                />
+                            )}
+                        </>
+                    )}
+
                     {post.userId == headerInfo._id ? (
                         <>
                             <div className="edit" onClick={() => setShowEditPostModal(true)}>

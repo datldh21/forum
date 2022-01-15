@@ -39,11 +39,6 @@ const Header = () => {
         <Redirect to='/users' />
     }
 
-    const clickProfile = () => {
-        history.push({ pathname: `/user/${userID}` });
-        <Redirect to='/user' />
-    }
-
     const logOut = () => {
         window.localStorage.removeItem("userInfo");
         window.location.href = "/";
@@ -56,24 +51,24 @@ const Header = () => {
                 <div className="software-name" onClick={() => clickHome()}>
                     FORUM
                 </div>
-                <div className="categories" title="Categories" onClick={() => clickHome()} style={{cursor: "pointer"}}>
+                <a className="categories" title="Categories" href={'/'} style={{cursor: "pointer"}}>
                     <img src={categories} />
-                </div> 
-                <div className="recent" title="Recent" onClick={() => clickRecent()} style={{cursor: "pointer"}}>
+                </a> 
+                <a className="recent" title="Recent" href={'/recent'} style={{cursor: "pointer"}}>
                     <img src={recent} />
-                </div>
-                <div className="popular" title="Popular" onClick={() => clickPopular()} style={{cursor: "pointer"}}>
+                </a>
+                <a className="popular" title="Popular" href={'/popular'} style={{cursor: "pointer"}}>
                     <img src={popular} />
-                </div>
-                <div className="users" title="Users" onClick={() => clickUsers()} style={{cursor: "pointer"}}>
+                </a>
+                <a className="users" title="Users" href={'/users'} style={{cursor: "pointer"}}>
                     <img src={users} />
-                </div>
+                </a>
+                <a className="search" title="Search" href={'/search'} style={{cursor: "pointer"}}>
+                    <img src={search} />
+                </a>
             </div>
 
             <div className="column-2">
-                <div className="search" title="Search" style={{cursor: "pointer"}}>
-                    <img src={search} />
-                </div>
                 <div className="notification" title="Notifications" style={{cursor: "pointer"}}>
                     <img src={notification} />
                 </div>
