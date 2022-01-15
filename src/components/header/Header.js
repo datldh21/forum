@@ -26,6 +26,7 @@ const Header = () => {
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userID = userInfo?._id;
     const notifications = useSelector((state) => state.notifications);
+    const page = useSelector((state) => state.page);
 
     const clickHome = () => {
         history.push({ pathname: '/' });
@@ -61,7 +62,6 @@ const Header = () => {
     const logOut = () => {
         window.localStorage.removeItem("userInfo");
         window.location.href = "/";
-
     };
 
     const clickNotification = async () => {
@@ -74,55 +74,59 @@ const Header = () => {
     }
 
     return (
-        <div className="header container">
-            <div className="column-1">
-                <div className="software-name" onClick={() => clickHome()}>
-                    FORUM
-                </div>
-                <a className="categories" title="Categories" href={'/'} style={{cursor: "pointer"}}>
-                    <img src={categories} />
-                </a> 
-                <a className="recent" title="Recent" href={'/recent'} style={{cursor: "pointer"}}>
-                    <img src={recent} />
-                </a>
-                <a className="popular" title="Popular" href={'/popular'} style={{cursor: "pointer"}}>
-                    <img src={popular} />
-                </a>
-                <a className="users" title="Users" href={'/users'} style={{cursor: "pointer"}}>
-                    <img src={users} />
-                </a>
-                <a className="search" title="Search" href={'/search'} style={{cursor: "pointer"}}>
-                    <img src={search} />
-                </a>
-            </div>
+        <>
+            {page != null && (
+                <div className="header container">
+                    <div className="column-1">
+                        <div className="software-name" onClick={() => clickHome()}>
+                            FORUM
+                        </div>
+                        <a className="categories" title="Categories" href={'/'} style={{cursor: "pointer"}}>
+                            <img src={categories} />
+                        </a> 
+                        <a className="recent" title="Recent" href={'/recent'} style={{cursor: "pointer"}}>
+                            <img src={recent} />
+                        </a>
+                        <a className="popular" title="Popular" href={'/popular'} style={{cursor: "pointer"}}>
+                            <img src={popular} />
+                        </a>
+                        <a className="users" title="Users" href={'/users'} style={{cursor: "pointer"}}>
+                            <img src={users} />
+                        </a>
+                        <a className="search" title="Search" href={'/search'} style={{cursor: "pointer"}}>
+                            <img src={search} />
+                        </a>
+                    </div>
 
-            <div className="column-2" ref={menuRef}>
-                <div 
-                    className="notification-icon" 
-                    title="Notifications" 
-                    onClick={() => clickNotification()}
-                    style={{cursor: "pointer"}}
-                >
-                    <img src={notification} />
-                    {headerInfo.notice == true && (
-                    <img className="red-dot" src={RedDot} />
-                )}
-                </div>
-                {showNotifications && (
-                    <Notifications
-                        show={showNotifications}
-                        notifications={notifications}
-                        onHide={() => setShowNotifications(false)}
-                    />
-                )}
-                <a className="user-avatar" href={'/user/' + userID}>
-                    <img src={userAvatar} />
-                </a>
-                <div className="log-out" onClick={() => logOut()}>
-                    <img src={logout} />
-                </div>
-            </div>
-        </div>
+                    <div className="column-2" ref={menuRef}>
+                        <div 
+                            className="notification-icon" 
+                            title="Notifications" 
+                            onClick={() => clickNotification()}
+                            style={{cursor: "pointer"}}
+                        >
+                            <img src={notification} />
+                            {headerInfo.notice == true && (
+                            <img className="red-dot" src={RedDot} />
+                        )}
+                        </div>
+                        {showNotifications && (
+                            <Notifications
+                                show={showNotifications}
+                                notifications={notifications}
+                                onHide={() => setShowNotifications(false)}
+                            />
+                        )}
+                        <a className="user-avatar" href={'/user/' + userID}>
+                            <img src={userAvatar} />
+                        </a>
+                        <div className="log-out" onClick={() => logOut()}>
+                            <img src={logout} />
+                        </div>
+                    </div>
+                </div>  
+            )}
+        </>    
     )
 };
 export default Header;

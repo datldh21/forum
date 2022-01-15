@@ -4,17 +4,23 @@ import axios from 'axios';
 import { Redirect, useHistory } from 'react-router';
 import Url from '../../util/url';
 import "./login.scss";
+import { useDispatch } from 'react-redux';
 
 const Login = (props) => {
     const history = useHistory();
+    const dispatch = useDispatch()
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userId = userInfo?._id;
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
     const [error, setError] = useState(false);
+
+    dispatch({ type: "SET_PAGE", data: null });
+
     const handleChangeEmail = e => {
         setEmail(e.target.value);
     }
+
     const handleChangePw = e => {
         setPassword(e.target.value);
     }

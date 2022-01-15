@@ -5,6 +5,8 @@
     background-color: white;
     border: 1px solid #c9c9c9;
     width: 350px;
+    max-height: 700px;
+    overflow-y: scroll;
     z-index: 1;
     transform: translate(-165px, 30px);
 
