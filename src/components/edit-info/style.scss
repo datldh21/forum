@@ -1,0 +1,85 @@
+.edit-info {
+    .line-1 {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+            padding: 15px;
+            color: #6c757d;
+            font-size: 20px;
+            display: flex;
+            flex-direction: row;
+    
+            .home {
+                margin-right: 5px;
+                color: #337ab7;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .content-profile {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 30px;
+        padding-bottom: 45px;
+        padding-top: 30px;
+
+        .column-1 {
+            .wrap-avatar {
+                display: flex;
+                flex-direction: row;
+    
+                .user-avatar {
+                    border: solid 5px #337ab7;
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 130px;
+                    transform: translateX(30px);
+                    img {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 120px;
+                        object-fit: cover;
+                        border: solid 3px white;
+                    }
+                }
+            }
+            
+            .username {
+                font-size: 24px;
+                color: #474d52;
+                text-align: center;
+            }
+    
+            .join-date {
+                text-align: center;
+            }
+        }
+
+        .column-2 {
+            
+            .form-group {
+                margin-bottom: 20px;
+                color: #333;
+                font-weight: 500;
+            }
+
+            input {
+                width: 800px;
+                height: 45px;
+                padding: 0px 10px;
+                border: 2px solid #ccc;
+            }
+
+            .save-btn {
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+                margin-top: 15px;
+                padding: 8px 25px;
+            }
+        }
+    }
+}

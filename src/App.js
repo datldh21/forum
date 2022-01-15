@@ -13,6 +13,7 @@ import Users from "./components/users";
 import Profile from "./components/profile";
 import TopicPosts from "./components/post/topicPosts";
 import SearchScreen from "./components/search-screen";
+import EditInfo from "./components/edit-info";
 
 function App() {
     const [page, setPage] = useState("");
@@ -65,6 +66,12 @@ function App() {
                             path="/user/:id"
                             component={Profile}
                             changePage={() => setPage("user")}                        
+                        />
+                        <AuthRoute
+                            exact
+                            path="/user/editInfo/:id"
+                            component={EditInfo}
+                            changePage={() => setPage("editInfo")}                        
                         />
                         <AuthRoute
                             exact

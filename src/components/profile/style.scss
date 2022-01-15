@@ -66,6 +66,11 @@
             text-align: center;
             font-size: 30px;
             color: #6c757d;
+
+            img {
+                transform: translate(20px, -5px);
+                cursor: pointer;
+            }
         }
 
         .username {
