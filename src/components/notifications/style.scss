@@ -32,4 +32,10 @@
             flex-flow: row wrap;
         }
     }
+
+    .dont-have-notifications {
+        text-align: center;
+        transform: translateY(30px);
+        min-height: 100px;
+    }
 }

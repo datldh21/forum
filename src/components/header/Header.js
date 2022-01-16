@@ -35,7 +35,11 @@ const Header = () => {
 
     const fetchNotifications = async () => {
         const res = await axios.get(Url("notifications/user/" + userID));
-        dispatch({ type: "SET_NOTIFICATIONS", data: res.data?.response});
+        if (res.data.success) {
+            dispatch({ type: "SET_NOTIFICATIONS", data: res.data?.response});
+        } else {
+            dispatch({ type: "SET_NOTIFICATIONS", data: null });
+        }
     }
 
     const fetchHeaderInfo = async () => {
